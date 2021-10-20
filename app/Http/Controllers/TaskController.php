@@ -26,8 +26,9 @@ class TaskController extends Controller
         ]);
         return redirect('/')->with('success', 'Task Added successfully.');
     }
-    public function DeleteTask()
+    public function DeleteTask($taskId)
     {
-        
+        Task::where('taskId',$taskId)->delete();
+        return redirect('/')->with('success', 'Task is successfully deleted');
     }
 }

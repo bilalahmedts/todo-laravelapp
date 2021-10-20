@@ -20,3 +20,4 @@ return view('welcome');
 Route::get('/', [TaskController::class, 'index']); // this will bring only the landing page i.e the page when we hit the url of web
 Route::get('/', [TaskController::class, 'ShowAllTasks']);
 Route::post('/', [TaskController::class, 'AddTasks']);
+Route::delete('/{taskId}', [TaskController::class, 'DeleteTask']);

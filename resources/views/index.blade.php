@@ -86,7 +86,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <form method="POST" action="/tasks/{{ $task->taskId }}">
+                                                <form method="POST" action="/{{ $task->taskId }}">
                                                     @method('DELETE')
                                                     @csrf
                                                     <input type="hidden" name="taskId" value="{{ $task->taskId }}">
