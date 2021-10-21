@@ -16,15 +16,25 @@
 
 <script>
     $(document).ready(function() {
-        $('.editTaskButton').on('click', function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).on('click', '.editTaskButton', function() {
+            var taskId = $(this).val();
             $('#editTask').modal('show');
-            $tr = $(this).closest('tr');
+            $.ajax({
+                type: "GET",
+                url: "/" + taskId,
+                success: function(response) {
+                    $('#taskId').val(response.task.taskId);
+                    $('#taskName').val(response.task.taskName);
+                }
 
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-            $('#taskId').val(data[1]);
-            $('#taskName').val(data[2]);
+
+
+            });
         });
     });
 </script>

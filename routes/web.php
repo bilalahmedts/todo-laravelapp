@@ -21,4 +21,5 @@ Route::get('/', [TaskController::class, 'index']); // this will bring only the l
 Route::get('/', [TaskController::class, 'ShowAllTasks']);
 Route::post('/', [TaskController::class, 'AddTasks']);
 Route::delete('/{taskId}', [TaskController::class, 'DeleteTask']);
-Route::get('/{taskId}/edit', [TaskController::class, 'UpdateTask']);
+Route::get('/{taskId}', [TaskController::class, 'EditTask']);
+Route::put('/', [TaskController::class, 'UpdateTask']);

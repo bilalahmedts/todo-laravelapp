@@ -11,4 +11,5 @@ class Task extends Model
     protected $table = 'tasks';
     protected $fillable = ['taskId', 'taskName'];
     public $timestamps = false;
+    protected $primaryKey = 'taskId';
 }

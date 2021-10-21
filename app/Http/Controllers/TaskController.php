@@ -31,23 +31,25 @@ class TaskController extends Controller
         Task::where('taskId', $taskId)->delete();
         return redirect('/')->with('success', 'Task is successfully deleted');
     }
-/*     public function EditTask($taskId)    
+
+    public function EditTask($taskId)
     {
-        
-        
+        $task = Task::find($taskId);
+        return response()->json(
+            ['task' => $task]
+        );
     }
-    public function UpdateTask(Request $request, $taskId)
+    public function UpdateTask(Request $request)
     {
-         $request->validate([
+        $taskId = $request->input('taskId');
+        $task = Task::find($taskId);
+        $request->validate([
             'taskName' => 'required',
         ]);
-
-        Task::where('taskId', $taskId)
-            ->update([
+           $task->update([
                 'taskName' => $request->input('taskName'),
             ]);
+            return redirect('/')->with('success', 'Task is successfully updated');
+    }
 
-        return redirect('/')->with('success', 'Task is updated successfully deleted');
-    } */
-    
 }
