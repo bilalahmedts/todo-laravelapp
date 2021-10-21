@@ -94,58 +94,58 @@
                                                         name="deleteTask">Delete</button>
                                                 </form>
                                             </div>
-                                            {{-- Edit form modal starts below --}}
+
                                             <div class="col-md-3">
-                                                <form method="POST">
+                                                <form method="POST" action="">
                                                     <input type="hidden" name="taskId" value="{{ $task->taskId }}">
 
                                                     <button class="btn btn-primary editTaskButton" type="button"
                                                         name="editTask" data-toggle="modal"
                                                         data-target="#editTask">Edit</button>
                                                 </form>
-                                                <div class="modal fade" id="editTask" tabindex="-1" role="dialog"
-                                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="editTask">Edit Tasks</h5>
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="card ">
-                                                                    <div class="card-body">
-                                                                        <form method="POST"
-                                                                            action="/tasks/{{ $task->taskId }}">
-                                                                            @csrf
-                                                                            @method('PUT')
-                                                                            <input type="hidden" name="taskId" id="taskId">
-                                                                            <div class="form-group">
-                                                                                <label>Enter Task</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="taskName" name="taskName">
-                                                                            </div>
-                                                                            <button type="submit" class="btn btn-primary"
-                                                                                name="updateTask">Update Task</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                                 @php $i++; @endphp
                             @endforeach
+                            {{-- Edit form modal starts below --}}
+                            <div class="modal fade" id="editTask" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editTask">Edit Tasks</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card ">
+                                                <div class="card-body">
+                                                    <form method="POST" action="/{{ $task->taskId }}/edit">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="taskId" id="taskId">
+                                                        <div class="form-group">
+                                                            <label>Enter Task</label>
+                                                            <input type="text" class="form-control" id="taskName"
+                                                                name="taskName">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary"
+                                                            name="updateTask">Update Task</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tbody>
                     </table>
                 </div>
